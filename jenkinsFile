@@ -2,13 +2,22 @@ pipeline
 	{
 	agent any
 	stages {
+	
 		stage('Build Application'){
 		bat 'mvn clean install'
+		}
+		
+		
+		
+		stage('Munit Tests'){
+		bat 'mvn clean test'
 		}
 		
 		
 		stage('Deploy Application to CloudHub'){
 		bat 'mvn clean deploy -DmuleDeploy -DskipTests -Danypoint.username=jmp22041112 -Danypoint.password=John00000 -DapplicationName=jenkins-demo-api'
 		}
+		
+		
 	}
 	}
