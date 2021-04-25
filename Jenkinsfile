@@ -5,7 +5,7 @@ pipeline
 	
 		stage('Build Application'){
 		steps{
-		bat 'sh clean install -DskipTests'
+		bat 'mvn clean install -DskipTests'
 		}
 		}
 		
@@ -13,14 +13,14 @@ pipeline
 		
 		stage('Munit Tests'){
 		steps{
-		bat 'sh clean test'
+		bat 'mvn clean test'
 		}
 		}
 		
 		
 		stage('Deploy Application to CloudHub'){
 		steps{
-		bat 'sh package deploy -Danypoint.username=jmp22041112 -Danypoint.password=John00000 -DapplicationName=jenkins-demo-api -DmuleDeploy'
+		bat 'mvn package deploy -Danypoint.username=jmp22041112 -Danypoint.password=John00000 -DapplicationName=jenkins-demo-api -DmuleDeploy'
 		}
 		}
 		
